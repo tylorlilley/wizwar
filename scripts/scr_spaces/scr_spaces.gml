@@ -16,13 +16,14 @@ function initialize_space_edge(space, dir, edge_type) {
 			adjacent_spaces[dir] = instance_place(adj_space_x, adj_space_y, obj_space);
 			edges[dir] = adjacent_spaces[dir].edges[opposite_dir(dir)];
 			edges[dir].outside_space = self;
+			edges[dir].outside_dir = opposite_dir(dir);
 		}
 		else { 
 			adjacent_spaces[dir] = noone;
 			edges[dir] = instance_create_depth(adj_edge_x, adj_edge_y, depth-1, edge_type);
 			edges[dir].image_angle = 90 * dir;
 			edges[dir].inside_space = self;
-			if (edge_type == obj_sector_exit) { edges[dir].exit_direction = dir; }
+			edges[dir].inside_dir = opposite_dir(dir);
 		}
 	}
 }

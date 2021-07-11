@@ -1,4 +1,4 @@
-/// @description Initialize Variables
-// Inherit the parent event
+/// @description Intialize Variables
 event_inherited();
-exit_direction = noone;
+
+exit_color = c_maroon;

@@ -1,16 +1,10 @@
 {
-  "spriteId": {
-    "name": "spr_edge",
-    "path": "sprites/spr_edge/spr_edge.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_game_object",
-    "path": "objects/obj_game_object/obj_game_object.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -29,11 +23,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "Objects",
+    "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_stone_wall",
+  "name": "obj_controller",
   "tags": [],
   "resourceType": "GMObject",
 }

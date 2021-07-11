@@ -1,6 +1,9 @@
 /// @description Draw Sector Exit Arrow
-if (exit_direction == 0) { draw_sprite_ext(spr_sector_exit, 0, x, y+8, image_xscale, image_yscale, 0, c_maroon, 0.5); }
-if (exit_direction == 1) { draw_sprite_ext(spr_sector_exit, 0, x-8, y, image_xscale, image_yscale, 270, c_maroon, 0.5); }
-if (exit_direction == 2) { draw_sprite_ext(spr_sector_exit, 0, x, y-8, image_xscale, image_yscale, 180, c_maroon, 0.5); }
-if (exit_direction == 3) { draw_sprite_ext(spr_sector_exit, 0, x+8, y, image_xscale, image_yscale, 90, c_maroon, 0.5); }
+var offset = 8;
+for (var i = 0; i < 4; i++;) {
+	var pos = pos_in_dir(i, offset);
+	if (inside_dir == i || outside_dir == i) { 
+		draw_sprite_ext(spr_sector_exit, 0, pos[0], pos[1], 1, 1, -90*opposite_dir(i), exit_color, 0.5); 
+	}
+}
 event_inherited();

@@ -6,6 +6,3 @@ adjacent_sectors = [self, self, self, self]; // TODO - connect edges on adjacent
 can_select = false;
 image_xscale = 5;
 image_yscale = 5;
-
-// Create Spaces
-initialize_sector_spaces(self, sector_one());
