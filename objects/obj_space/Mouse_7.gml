@@ -1,5 +1,5 @@
 /// @description Destroy All Edge Occupants
-//for (var i = 0; i < 4; i++;) { destroy_all_edge_occupants(edges[i]); }
+for (var i = 0; i < 4; i++;) { destroy_all_edge_occupants(edges[i]); }
 
 /// @description Color All Edges
 /*

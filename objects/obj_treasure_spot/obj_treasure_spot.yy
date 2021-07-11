@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_space_mask",
+    "path": "sprites/spr_space_mask/spr_space_mask.yy",
+  },
   "persistent": false,
   "parentObjectId": {
     "name": "obj_space",

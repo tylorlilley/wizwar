@@ -1,18 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_space",
-    "path": "sprites/spr_space/spr_space.yy",
+    "name": "spr_edge",
+    "path": "sprites/spr_edge/spr_edge.yy",
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": {
-    "name": "spr_space_mask",
-    "path": "sprites/spr_space_mask/spr_space_mask.yy",
-  },
+  "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_space",
-    "path": "objects/obj_space/obj_space.yy",
+    "name": "obj_game_object",
+    "path": "objects/obj_game_object/obj_game_object.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,16 +24,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Board Area",
-    "path": "folders/Objects/Board Area.yy",
+    "name": "Objects",
+    "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_home_base_spot",
+  "name": "obj_stone_wall",
   "tags": [],
   "resourceType": "GMObject",
 }

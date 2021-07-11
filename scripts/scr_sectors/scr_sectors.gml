@@ -1,5 +1,4 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+// Script for interacting with sectors
 function initialize_sector_spaces(sector, sector_information) {
 	with sector {
 		var x_offset = 16, y_offset = 16;
@@ -85,6 +84,33 @@ function sector_with_outer_walls() {
 }
 
 function sector_one() {
+	var sector_information = sector_with_outer_walls();
+	
+	sector_information[0, 1][1] = obj_stone_wall;
+	sector_information[0, 2][2] = obj_stone_wall;
+	
+	sector_information[1, 0][2] = obj_stone_wall;
+	sector_information[1, 1][1] = obj_stone_wall;
+	sector_information[1, 2][1] = obj_stone_wall;
+	sector_information[1, 2][2] = obj_door;
+	sector_information[1, 3][2] = obj_stone_wall;
+	
+	sector_information[2, 0][2] = obj_stone_wall;
+	sector_information[2, 2][1] = obj_stone_wall;
+	sector_information[2, 3][2] = obj_stone_wall;
+	
+	sector_information[3, 0][2] = obj_stone_wall;
+	sector_information[3, 1][2] = obj_stone_wall;
+	sector_information[3, 3][1] = obj_stone_wall;
+	sector_information[3, 3][2] = obj_stone_wall;
+	
+	sector_information[4, 1][2] = obj_stone_wall;
+	sector_information[4, 2][2] = obj_door;
+	
+	return sector_information;
+}
+
+function sector_two() {
 	var sector_information = sector_with_outer_walls();
 	
 	sector_information[0, 1][1] = obj_stone_wall;

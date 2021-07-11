@@ -1,5 +1,5 @@
-/// @description Destroy All Occupants
-destroy_all_edge_occupants(self);
+/// @description Remove All Destroyed Tokens
+remove_destroyed_tokens_on_edge(self);
 
 
 /// @description Color Adjacent Spaces
