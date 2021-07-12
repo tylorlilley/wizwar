@@ -3,5 +3,7 @@
 
 
 /// @description Color Adjacent Spaces
-if inside_space { inside_space.highlighted = true; inside_space.image_blend = c_red; }
-if outside_space { outside_space.highlighted = true; outside_space.image_blend = c_blue; }
+var colors = [c_red, c_blue, c_green, c_purple];
+for (var i = 0; i < 4; i++;) {
+	if spaces[i] { spaces[i].highlighted = true; spaces[i].image_blend = colors[i]; }
+}

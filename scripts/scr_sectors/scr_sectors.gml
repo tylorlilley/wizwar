@@ -16,19 +16,34 @@ function initialize_sector_spaces(sector, sector_information) {
 				if (i == 2 && j == 4) { edge_information[2] = obj_sector_exit; }
 				if (i == 0 && j == 2) { edge_information[3] = obj_sector_exit; }
 				
-				sector_spaces[i, j] = instance_create_depth(left_x+((i)*x_offset), top_y+((j)*y_offset), 0, space_type);
-				sector_spaces[i, j].sector = self;
-				sector_spaces[i, j].i = i; // TODO: remove
-				sector_spaces[i, j].j = j; // TODO: remove
-				initialize_space_edges(sector_spaces[i, j], edge_information);
-				create_objects_around_space(sector_spaces[i, j], sector_information[i, j]);
+				spaces[i, j] = instance_create_depth(left_x+((i)*x_offset), top_y+((j)*y_offset), 0, space_type);
+				spaces[i, j].sector = self;
+				initialize_space_edges(spaces[i, j], edge_information);
+				create_objects_around_space(spaces[i, j], sector_information[i, j]);
 			}
 		}
 		
-		with sector_spaces[2, 0].edges[0] { instance_change(obj_sector_exit, true); }
-		with sector_spaces[4, 2].edges[1] { instance_change(obj_sector_exit, true); image_angle = 90; }
-		with sector_spaces[2, 4].edges[2] { instance_change(obj_sector_exit, true); }
-		with sector_spaces[0, 2].edges[3] { instance_change(obj_sector_exit, true); image_angle = 90; }
+		with spaces[2, 0].edges[0] { instance_change(obj_sector_exit, true); }
+		with spaces[4, 2].edges[1] { instance_change(obj_sector_exit, true); image_angle = 90; }
+		with spaces[2, 4].edges[2] { instance_change(obj_sector_exit, true); }
+		with spaces[0, 2].edges[3] { instance_change(obj_sector_exit, true); image_angle = 90; }
+	}
+}
+
+function initialize_sector_edges(sector) {
+	for (var i = 0; i < 4; i++;) { 
+		initialize_sector_edge(sector, i);
+	}
+}
+
+function initialize_sector_edge(sector, dir) {
+	with sector {
+		var sector_size = 80;
+		var pos = pos_in_dir(dir, sector_size)
+		if instance_place(pos[0], pos[1], obj_sector) { 
+			adjacent_sectors[dir] = instance_place(pos[0], pos[1], obj_sector);
+			connected_by_warp[dir] = false;
+		}
 	}
 }
 

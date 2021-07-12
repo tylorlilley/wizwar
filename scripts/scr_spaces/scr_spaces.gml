@@ -10,21 +10,63 @@ function initialize_space_edge(space, dir, edge_type) {
 		var adj_space_y = pos_in_dir(dir, sprite_height)[1],
 		var adj_edge_x = pos_in_dir(dir, x_offset)[0]; 
 		var adj_edge_y = pos_in_dir(dir, y_offset)[1];
+		var warp_edge = false;
 		
-		// Share edges with neighbor if edge already exists, if not, create an edge of the given edge type
-		if (instance_place(adj_space_x, adj_space_y, obj_space)) { 
-			adjacent_spaces[dir] = instance_place(adj_space_x, adj_space_y, obj_space);
-			edges[dir] = adjacent_spaces[dir].edges[opposite_dir(dir)];
-			edges[dir].outside_space = self;
-			edges[dir].outside_dir = opposite_dir(dir);
+		// Set adjacent space to that of a different sector if needed
+		if (!instance_place(adj_space_x, adj_space_y, obj_sector)) {
+			warp_edge = true;
+			switch (dir)
+			{
+				case (directions.UP): {
+					adj_space_y += sector.sprite_height;
+					adj_space_y += sector.adjacent_sectors[dir].y;
+					adj_space_y -= sector.y;
+					break;
+				}
+				case (directions.RIGHT): {
+					adj_space_x -= sector.sprite_width;
+					adj_space_x += sector.adjacent_sectors[dir].x;
+					adj_space_x -= sector.x;
+					break;
+				}
+				case (directions.DOWN): {
+					adj_space_y -= sector.sprite_height;
+					adj_space_y += sector.adjacent_sectors[dir].y;
+					adj_space_y -= sector.y;
+					break;
+				}
+				case (directions.LEFT): {
+					adj_space_x += sector.sprite_width;
+					adj_space_x += sector.adjacent_sectors[dir].x;
+					adj_space_x -= sector.x;
+					break;
+				}
+			}
+			x2 = adj_space_x;
+			y2 = adj_space_y;
 		}
+		
+		// Connect space to neighboring space in this direction if it already exists
+		if (instance_place(adj_space_x, adj_space_y, obj_space)) { 
+			connect_spaces(self, instance_place(adj_space_x, adj_space_y, obj_space), dir);
+		}
+		// Create new edges around this space since no space exists where one will yet
 		else { 
 			adjacent_spaces[dir] = noone;
 			edges[dir] = instance_create_depth(adj_edge_x, adj_edge_y, depth-1, edge_type);
 			edges[dir].image_angle = 90 * dir;
-			edges[dir].inside_space = self;
-			edges[dir].inside_dir = opposite_dir(dir);
+			edges[dir].spaces[opposite_dir(dir)] = self;
 		}
+		edges[dir].warp_edge = warp_edge;
+	}
+}
+
+function connect_spaces(space1, space2, dir) {
+	with space1 {
+		adjacent_spaces[dir] = space2;
+		space2.adjacent_spaces[opposite_dir(dir)] = space1;
+		edges[dir] = space2.edges[opposite_dir(dir)];
+		edges[dir].spaces[opposite_dir(dir)] = self;
 	}
 }
 

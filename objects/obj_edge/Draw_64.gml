@@ -1,4 +1,4 @@
-/// @description Insert description here
+/// @description Draw Debug Info
 // You can write your code in this editor
 
 //if (inside_space && inside_space.highlighted && highlighted) { draw_set_color(c_red); draw_text(inside_space.x, inside_space.y, string(inside_dir)); }
