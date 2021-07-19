@@ -79,3 +79,35 @@ function create_objects_around_space(space, objects_to_create) {
 		}
 	}
 }
+
+function rotate_space_edges(space, angle) {
+	// This rotates the whole space for when a sector is physically rotated; this doesn't rotate a single space within a sector,
+	// as that would require creating and destroying walls and destroyed tokens on its edges.
+	var old_occupants = [noone, noone, noone, noone];
+	for (var i = 0; i < 4; i++;) { old_occupants[i] = space.edges[i].occupants; }
+	for (var i = 0; i < 4; i++;) { 
+		var new_occupants = old_occupants[(i + (angle/30)) mod 4];
+		space.edges[i].occupants = new_occupants;
+		for (var j = 0; j < ds_list_size(new_occupants); j++;) { ds_list_find_value(new_occupants, j).place_on_board = space.edges[i]; }
+	}
+	
+	/*
+	with space {
+		var new_edges = [noone, noone, noone, noone];
+		for (var i = 0; i < 4; i++;) {
+			var new_edge_pos = (i + (angle/90)) mod 4;
+			new_edges[new_edge_pos] = edges[i];
+			new_edges[new_edge_pos].image_angle = edges[i].image_angle;
+			new_edges[new_edge_pos].x = edges[i].x;
+			new_edges[new_edge_pos].y = edges[i].y;
+			var new_spaces = [noone, noone, noone, noone];
+			for (var j = 0; j < 4; j++;) {
+				var new_space_pos = (j + (angle/90)) mod 4;
+				new_spaces[new_space_pos] = edges[i].spaces[j];
+			}
+			new_edges[i].spaces = new_spaces;
+		}
+		edges = new_edges;
+	}
+	*/
+}

@@ -40,11 +40,39 @@ function initialize_sector_edge(sector, dir) {
 	with sector {
 		var sector_size = 80;
 		var pos = pos_in_dir(dir, sector_size)
-		if instance_place(pos[0], pos[1], obj_sector) { 
+		if (instance_place(pos[0], pos[1], obj_sector)) { 
 			adjacent_sectors[dir] = instance_place(pos[0], pos[1], obj_sector);
 			connected_by_warp[dir] = false;
 		}
+		else {
+			adjacent_sectors[dir] = self;
+			connected_by_warp[dir] = true;
+		}
 	}
+}
+
+function rotate_sector(sector, angle) {
+	// Reposition spaces within sector
+	for (var i = 0; i < 5; i++;) {
+		for (var j = 0; j < 5; j++;) {
+			with spaces[i, j] {
+				// Reposition Space
+				var x_prev = x - sector.x;
+				var y_prev = y - sector.y;
+				x = ((x_prev * dcos(angle)) + (y_prev * dsin(angle))) + sector.x;
+				y = ((y_prev * dcos(angle)) - (x_prev * dsin(angle))) + sector.y;
+				// Reposition Space's Edges
+				for (var k = 0; k < 4; k++;) {
+					//var pos = pos_in_dir(k, sprite_width/2);
+					//edges[k].x = pos[0];
+					//edges[k].y = pos[1];
+				}
+				// Rotate Space the same Amount
+				rotate_space_edges(self, angle);
+			}
+		}
+	}
+	// TODO: Re-establish links to sectors?
 }
 
 function blank_sector() {
@@ -99,33 +127,6 @@ function sector_with_outer_walls() {
 }
 
 function sector_one() {
-	var sector_information = sector_with_outer_walls();
-	
-	sector_information[0, 1][1] = obj_stone_wall;
-	sector_information[0, 2][2] = obj_stone_wall;
-	
-	sector_information[1, 0][2] = obj_stone_wall;
-	sector_information[1, 1][1] = obj_stone_wall;
-	sector_information[1, 2][1] = obj_stone_wall;
-	sector_information[1, 2][2] = obj_door;
-	sector_information[1, 3][2] = obj_stone_wall;
-	
-	sector_information[2, 0][2] = obj_stone_wall;
-	sector_information[2, 2][1] = obj_stone_wall;
-	sector_information[2, 3][2] = obj_stone_wall;
-	
-	sector_information[3, 0][2] = obj_stone_wall;
-	sector_information[3, 1][2] = obj_stone_wall;
-	sector_information[3, 3][1] = obj_stone_wall;
-	sector_information[3, 3][2] = obj_stone_wall;
-	
-	sector_information[4, 1][2] = obj_stone_wall;
-	sector_information[4, 2][2] = obj_door;
-	
-	return sector_information;
-}
-
-function sector_two() {
 	var sector_information = sector_with_outer_walls();
 	
 	sector_information[0, 1][1] = obj_stone_wall;

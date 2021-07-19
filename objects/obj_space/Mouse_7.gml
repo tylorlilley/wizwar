@@ -1,12 +1,14 @@
+/// @description Rotate Space
+rotate_space_edges(self, 90);
+
+
 /// @description Destroy All Edge Occupants
-for (var i = 0; i < 4; i++;) { destroy_all_edge_occupants(edges[i]); }
+//for (var i = 0; i < 4; i++;) { destroy_all_edge_occupants(edges[i]); }
 
 /// @description Color All Edges
-/*
 for (var i = 0; i < 4; i++;) {
 	var edge = edges[i];
-	edges[i].visible = true;
+	edges[i].highlighted = true;
 	colors = [c_orange, c_red, c_blue, c_green];
 	edges[i].image_blend = colors[i];
 }
-*/

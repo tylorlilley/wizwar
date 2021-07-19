@@ -1,2 +1,2 @@
-/// @description Restart Game
-game_restart();
+/// @description Rotate Sector
+rotate_sector(self, 90);

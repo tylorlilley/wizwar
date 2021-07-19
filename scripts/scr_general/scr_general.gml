@@ -14,10 +14,6 @@ function clockwise_dir(dir){
 	return (dir + 1) mod 4;
 }
 
-function counterclockwise_dir(dir){
-	return (dir - 1) mod 4;
-}
-
 function pos_in_dir(dir, dist) {
 	var pos;
 	pos[0] = x;

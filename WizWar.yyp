@@ -21,6 +21,7 @@
     {"id":{"name":"obj_sector_exit","path":"objects/obj_sector_exit/obj_sector_exit.yy",},"order":4,},
     {"id":{"name":"obj_door","path":"objects/obj_door/obj_door.yy",},"order":1,},
     {"id":{"name":"obj_treasure_spot","path":"objects/obj_treasure_spot/obj_treasure_spot.yy",},"order":5,},
+    {"id":{"name":"scr_game_objects","path":"scripts/scr_game_objects/scr_game_objects.yy",},"order":4,},
     {"id":{"name":"spr_space","path":"sprites/spr_space/spr_space.yy",},"order":0,},
     {"id":{"name":"obj_sector","path":"objects/obj_sector/obj_sector.yy",},"order":3,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},

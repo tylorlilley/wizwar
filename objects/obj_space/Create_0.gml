@@ -3,6 +3,7 @@ event_inherited();
 depth -= 1;
 occupants = ds_list_create();
 sector = noone;
+edges = [noone, noone, noone, noone];
 x2 = 0;
 y2 = 0;
 //initialize_space_edges(self);
